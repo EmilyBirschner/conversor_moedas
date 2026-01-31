@@ -1,4 +1,13 @@
+# Ignorar ambiente virtual (CRUCIAL)
 venv/
-__pycache__/
+env/
 .env
+
+# Ignorar arquivos compilados do Python (Lixo)
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignorar arquivos de sistema
 .DS_Store
+Thumbs.db
