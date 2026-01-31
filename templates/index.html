@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conversor de Moedas</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="card">
+        <h1>💱 Conversor</h1>
+        <p class="subtitle">Utilize os códigos oficiais (Ex: BTC, USD, BRL)</p>
+
+        <form method="POST">
+          <div class="form-group">
+            <label>Valor</label>
+            <input
+              type="number"
+              step="any"
+              name="valor"
+              value="{{ v_valor }}"
+              required
+            />
+          </div>
+
+          <div class="row">
+            <div class="form-group">
+              <label>De (Origem)</label>
+              <input
+                type="text"
+                name="moeda_origem"
+                placeholder="BTC"
+                value="{{ v_origem }}"
+                required
+              />
+            </div>
+
+            <div class="arrow">➔</div>
+
+            <div class="form-group">
+              <label>Para (Destino)</label>
+              <input
+                type="text"
+                name="moeda_destino"
+                placeholder="BRL"
+                value="{{ v_destino }}"
+                required
+              />
+            </div>
+          </div>
+
+          <button type="submit" class="btn-convert">Converter Agora</button>
+        </form>
+
+        {% if resultado %}
+        <div class="result-box success">
+          <span class="label">Resultado da conversão:</span>
+          <span class="value">{{ resultado }}</span>
+        </div>
+        {% endif %} {% if erro %}
+        <div class="result-box error">
+          <span>{{ erro }}</span>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </body>
+</html>
