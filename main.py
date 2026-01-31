@@ -1,13 +1,7 @@
-import requests
+from clients import CoinConversorService
 
 
-def converter(coin_origin, coin_target):
-    response = requests.get(
-        url=f"https://economia.awesomeapi.com.br/json/last/{coin_origin}-{coin_target}"
-    )
-    if response.status_code == 404:
-        return response.json().get("message")
-    return response.json().get(f"{coin_origin}{coin_target}").get("bid")
+client = CoinConversorService()
+conversion = client.converter("BTC", "USD")
 
-
-print(converter("BTC", "BRL"))
+print(f"R$ {conversion}")
